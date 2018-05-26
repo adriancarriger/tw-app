@@ -1,0 +1,9 @@
+{
+  "name": "tw-app",
+  "author": "Adrian Carriger <hello@adriancarriger.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "exit 0",
+    "test": "exit 0"
+  }
+}
