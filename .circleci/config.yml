@@ -1,24 +1,36 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
 version: 2
 jobs:
   build:
+    working_directory: /app
     docker:
-      - image: node:8.9
-
-    working_directory: ~/repo
-
+       - image: docker:18.05.0-ce-git
     steps:
       - checkout
-
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-
-      - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: yarn test
+      - setup_remote_docker
+      - run:
+          name: Install CircleCI dependencies
+          command: |
+            apk add --no-cache curl curl-dev py-pip
+            pip install --upgrade pip
+            pip install docker-compose
+      - run:
+          name: Move repo into subfolder
+          command: |
+            cp -r /app/. ~/tw-app
+            mv -v ~/tw-app /app/tw-app
+      - run:
+          name: Clone tw-base
+          command: git clone --branch develop --depth 1 git@github.com:adriancarriger/tw-base.git
+      - run:
+          name: Get tw-* dependencies
+          command: ./tw-base/init.sh
+      - run:
+          name: Build Docker images
+          command: docker-compose -f ./tw-base/docker-compose.yml build
+      - run:
+           name: Start Docker
+           command: docker-compose -f ./tw-base/docker-compose.yml up -d
