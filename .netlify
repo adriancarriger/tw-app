@@ -1,0 +1,12 @@
+{
+  "site_id": "be9e74f9-fbbf-4985-8ed6-9f4e9ea7a79b",
+  "path": "dist",
+  "staging": {
+    "site_id": "be9e74f9-fbbf-4985-8ed6-9f4e9ea7a79b",
+    "path": "dist"
+  },
+  "production": {
+    "site_id": "7aa32792-78bb-457a-a2eb-de58a5a0a736",
+    "path": "dist"
+  }
+}

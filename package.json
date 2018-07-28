@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e"
+    "test:e2e": "vue-cli-service test:e2e",
+    "deploy": "netlify deploy"
   },
   "dependencies": {
     "register-service-worker": "^1.0.0",
@@ -30,7 +31,8 @@
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "ts-jest": "^23.0.0",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.5.16",
+    "netlify-cli": "^1.2.2"
   },
   "postcss": {
     "plugins": {
