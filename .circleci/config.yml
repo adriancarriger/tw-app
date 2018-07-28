@@ -34,3 +34,12 @@ jobs:
       - run:
            name: Start Docker
            command: docker-compose -f ./tw-base/docker-compose.yml up -d
+      - deploy:
+          name: Deploy
+          command: |
+            docker-compose -f ./tw-base/docker-compose.yml exec \
+            -e CIRCLE_BRANCH=$CIRCLE_BRANCH \
+            -e NETLIFY_CLI_TOKEN=$NETLIFY_CLI_TOKEN \
+            -e SERVER_URI_STAGING=$SERVER_URI_STAGING \
+            -e SERVER_URI_PRODUCTION=$SERVER_URI_PRODUCTION \
+             app /bin/sh -c ".circleci/deploy.sh"
