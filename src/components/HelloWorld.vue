@@ -29,6 +29,16 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <h3>Primsa Example</h3>
+    <ul>
+      <ApolloQuery :query="require('../graphql/HelloWorld.gql')">
+        <template slot-scope="{ result: { loading, error, data } }">
+          <template v-if="data">
+            <li v-for="item in data.feed" :key="item.id">{{ item.title }}</li>
+          </template>
+        </template>
+      </ApolloQuery>
+    </ul>
   </div>
 </template>
 
