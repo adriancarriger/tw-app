@@ -1,0 +1,9 @@
+query HelloWorld {
+  feed {
+    id
+    title
+  }
+  drafts {
+    title
+  }
+}
