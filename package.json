@@ -3,17 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "yarn serve",
     "serve": "vue-cli-service serve --port 4333",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "deploy": "netlify deploy",
+    "start": "yarn serve",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
-    "deploy": "netlify deploy"
+    "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.16",
+    "vue-apollo": "^3.0.0-beta.10",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
@@ -29,11 +30,13 @@
     "@vue/cli-service": "^3.0.0-rc.5",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
+    "graphql-tag": "^2.9.0",
     "netlify-cli": "^1.2.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "ts-jest": "^23.0.0",
     "typescript": "^2.9.2",
+    "vue-cli-plugin-apollo": "^0.16.2",
     "vue-template-compiler": "^2.5.16"
   },
   "postcss": {

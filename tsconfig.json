@@ -4,6 +4,7 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
+    "noImplicitAny": false,
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -24,7 +25,8 @@
       "es2015",
       "dom",
       "dom.iterable",
-      "scripthost"
+      "scripthost",
+      "esnext.asynciterable"
     ]
   },
   "include": [
