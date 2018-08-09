@@ -1,6 +1,7 @@
 {
   "name": "tw-app",
   "version": "0.1.0",
+  "author": "Adrian Carriger <hello@adriancarriger.com> (http://adriancarriger.com)",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 4333",
