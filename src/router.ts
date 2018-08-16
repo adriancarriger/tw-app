@@ -5,7 +5,8 @@ import About from './views/About.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -15,7 +16,27 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      component: About
+      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    {
+      path: '/callback',
+      name: 'callback',
+      component: () => import(/* webpackChunkName: "callback" */ './views/Callback.vue')
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.name === 'callback') {
+    // check if "to"-route is "callback" and allow access
+    next();
+  } else if (router.app.$auth.isAuthenticated()) {
+    // if authenticated allow access
+    next();
+  } else {
+    // trigger auth0 login
+    router.app.$auth.login();
+  }
+});
+
+export default router;
