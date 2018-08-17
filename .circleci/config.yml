@@ -7,7 +7,7 @@ jobs:
   build:
     working_directory: /app
     docker:
-       - image: docker:18.05.0-ce-git
+      - image: docker:18.05.0-ce-git
     steps:
       - checkout
       - setup_remote_docker
@@ -32,8 +32,8 @@ jobs:
           name: Build Docker images
           command: docker-compose -f ./tw-base/docker-compose.yml build
       - run:
-           name: Start Docker
-           command: docker-compose -f ./tw-base/docker-compose.yml up -d
+          name: Start Docker
+          command: docker-compose -f ./tw-base/docker-compose.yml up -d
       - deploy:
           name: Deploy
           command: |
@@ -42,4 +42,6 @@ jobs:
             -e NETLIFY_CLI_TOKEN=$NETLIFY_CLI_TOKEN \
             -e SERVER_URI_STAGING=$SERVER_URI_STAGING \
             -e SERVER_URI_PRODUCTION=$SERVER_URI_PRODUCTION \
+            -e APP_URI_STAGING=$APP_URI_STAGING \
+            -e APP_URI_PRODUCTION=$APP_URI_PRODUCTION \
              app /bin/sh -c ".circleci/deploy.sh"

@@ -5,13 +5,10 @@ import { createApolloClient } from 'vue-cli-plugin-apollo/graphql-client';
 // Install the vue plugin
 Vue.use(VueApollo);
 
-// Http endpoint
-const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'http://localhost:4332';
-
 // Config
 const defaultOptions = {
   // You can use `https` for secure connection (recommended in production)
-  httpEndpoint,
+  httpEndpoint: `${process.env.VUE_APP_SERVER_URI}`,
   // You can use `wss` for secure connection (recommended in production)
   // Use `null` to disable subscriptions
   // wsEndpoint: process.env.VUE_APP_GRAPHQL_WS || 'ws://localhost:4000/graphql',
