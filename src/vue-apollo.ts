@@ -11,7 +11,8 @@ const defaultOptions = {
   httpEndpoint: `${process.env.VUE_APP_SERVER_URI}`,
   // You can use `wss` for secure connection (recommended in production)
   // Use `null` to disable subscriptions
-  // wsEndpoint: process.env.VUE_APP_GRAPHQL_WS || 'ws://localhost:4000/graphql',
+  // wsEndpoint: process.env.VUE_APP_GRAPHQL_WS || 'ws://localhost:4332',
+  // wsEndpoint: 'ws://localhost:4332/graphql',
 
   // Enable Automatic Query persisting with Apollo Engine
   persisting: false,
@@ -19,7 +20,7 @@ const defaultOptions = {
   // You need to pass a `wsEndpoint` for this to work
   websocketsOnly: false,
   // Is being rendered on the server?
-  ssr: false
+  ssr: false,
 
   // Override default http link
   // link: myLink
@@ -27,8 +28,7 @@ const defaultOptions = {
   // Override default cache
   // cache: myCache
 
-  // Override the way the Authorization header is set
-  // getAuth: (tokenName) => ...
+  getAuth: (tokenName) => `Bearer ${localStorage.getItem('idToken')}`
 
   // Additional ApolloClient options
   // apollo: { ... }
